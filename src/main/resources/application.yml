@@ -1,0 +1,36 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders: "*"
+      routes:
+        - id: identity-service
+          uri: http://${IDENTITY_HOST:localhost}:8081
+          predicates:
+            - Path=/api/v1/auth/**, /api/v1/users/**
+        - id: academic-service
+          uri: http://${ACADEMIC_HOST:localhost}:8082
+          predicates:
+            - Path=/api/v1/courses/**, /api/v1/grades/**
+        - id: attendance-service
+          uri: http://${ATTENDANCE_HOST:localhost}:8083
+          predicates:
+            - Path=/api/v1/attendance/**
+        - id: communication-service
+          uri: http://${COMMS_HOST:localhost}:8085
+          predicates:
+            - Path=/api/v1/messages/**
