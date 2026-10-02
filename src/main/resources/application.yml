@@ -26,17 +26,22 @@ spring:
           uri: http://${ACADEMIC_HOST:localhost}:8082
           predicates:
             - Path=/api/v1/courses/**, /api/v1/grades/**
+          filters:
+            - JwtAuthFilter
         - id: attendance-service
           uri: http://${ATTENDANCE_HOST:localhost}:8083
           predicates:
             - Path=/api/v1/attendance/**
+          filters:
+            - JwtAuthFilter
         - id: communication-service
           uri: http://${COMMS_HOST:localhost}:8085
           predicates:
             - Path=/api/v1/messages/**
+          filters:
+            - JwtAuthFilter
 
 # keywords: routes filters x-user-id validate
 
 jwt:
   secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
-
