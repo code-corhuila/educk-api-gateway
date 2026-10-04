@@ -1,32 +1,22 @@
-## Pull Request — Team G1 (EduTrack / educk)
+## What changes and why
+<!-- One paragraph. The reviewer reads this before the diff. -->
 
-> **Regla de oro del curso:** Todo PR debe tener un diff menor a **400 líneas**, respetar la convención `<abbr>-<domain>-<piece>` y tener pruebas verdes.
 
-### 1. Información General
-- **Historia de Usuario / Tarea:** HU-___
-- **Tipo de Cambio:**
-  - [ ] `feat`: Nueva funcionalidad
-  - [ ] `fix`: Corrección de error / bugfix
-  - [ ] `test`: Nuevas pruebas unitarias o de integración
-  - [ ] `refactor`: Refactorización de código sin cambio de comportamiento
-  - [ ] `docs`: Actualización de documentación o contratos
-  - [ ] `chore`: Configuración, Docker, dependencias
+## User story (required)
+<!-- Replace <abbr> and NN. Without this line env-tracking cannot move the story on the board. -->
+Refs: code-corhuila/<abbr>-docs#NN
 
-### 2. Resumen del Cambio
-<!-- Explica brevemente qué hiciste y por qué -->
 
----
+## Promotion trail (only for pull requests into `qa` or `main`)
+<!-- List the original commits this pull request re-applies.
+     Every commit must carry the line "(cherry picked from commit <sha>)". -->
+-
 
-### 3. Lista de Verificación Obligatoria (Quality Gates)
-*Marca cada casilla con [x]. Todos los puntos son obligatorios para que tu PR sea aprobado:*
 
-- [ ] **Límite de Tamaño:** El diff del PR es estrictamente menor a **400 líneas de código**.
-- [ ] **Ramas Correctas:** El PR viene de una rama hija (`feat/HU-XXX-...`, `fix/...`, `docs/...`) hacia `develop`. (Prohibido hacer push directo).
-- [ ] **Conventional Commits:** Todos los mensajes de commit están en inglés y siguen el formato `type(scope): description`.
-- [ ] **Cero Secretos:** No se subieron contraseñas, tokens ni archivos `.env` con credenciales reales.
-- [ ] **Pruebas Automatizadas:** El código compila y las pruebas unitarias pasan 100% en verde (`mvn test` / `npm test`).
-- [ ] **Arquitectura Hexagonal (Backend):** La capa `domain/` es Java puro (cero `import` de Spring, JPA o SQL).
-- [ ] **Soberanía de Base de Datos (ADR-003):** Ningún script DDL ni migración está dentro del backend. Cero claves foráneas físicas cross-database.
-- [ ] **Docker & Nombres:** Contenedores usan `<abbr>-<domain>-<piece>` y la API espera salud real (`condition: service_healthy` con `pg_isready`).
-- [ ] **Documentación en Inglés (ADR-001):** Comentarios, nombres y documentación técnica están en inglés.
-
+## Checklist
+- [ ] Meets the acceptance criteria of the user story
+- [ ] Local validation passes (build + tests)
+- [ ] Under 400 changed lines, excluding tests and generated files
+- [ ] Title follows Conventional Commits
+- [ ] Database repositories: only NEW changesets — no applied changeset was edited
+- [ ] Into `qa` or `main`: every commit was re-applied with `git cherry-pick -x`
