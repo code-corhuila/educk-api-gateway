@@ -12,11 +12,14 @@ name: Board environment tracking
 
 on:
   pull_request:
-    types: [closed]
-    branches: [develop, qa, main]
-
+    branches: [ develop, qa ]
+  workflow_dispatch:
 permissions:
   contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   track:
